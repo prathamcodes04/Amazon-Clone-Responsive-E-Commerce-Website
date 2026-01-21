@@ -22,7 +22,7 @@ export function addTocART(productId){
   let matchingItem;
   //productName and quantity saved in item
   cart.forEach((cartItem) => {
-    if(productId === cartItem.productName){
+    if(productId === cartItem.productId){
       matchingItem = cartItem;
     }
   });
@@ -33,7 +33,7 @@ export function addTocART(productId){
   } else{
     //pushing product
     cart.push({
-      productId,
+      productId: productId,
       quantity: 1,
       deliveryOptionId: '1'
     });
@@ -55,6 +55,22 @@ export function removeFromCart(productId){
 
   //replacing cart with newCart
   cart = newCart;
+
+  saveToStorage();
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId){
+  //loop through cart to find pdt
+  let matchingItem;
+  //productName and quantity saved in item
+  cart.forEach((cartItem) => {
+    if(productId === cartItem.productId){
+      matchingItem = cartItem;
+    }
+  });
+
+  //updating deliveryOptionId
+  matchingItem.deliveryOptionId = deliveryOptionId;
 
   saveToStorage();
 }
