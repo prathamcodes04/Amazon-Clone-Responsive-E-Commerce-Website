@@ -1,0 +1,15 @@
+export const deliveryOptions = [{
+  id: '1',
+  deliveryDays: 7,
+  priceCents: 0
+},{
+  id: '2',
+  deliveryDays: 3,
+  priceCents: 4.99
+},{
+  id: '3',
+  deliveryDays: 1,
+  priceCents: 999
+}];
+
+//now saving deliveryOptionId in cart.js
