@@ -61,6 +61,35 @@ class Clothing extends Product{
   }
 }
 
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
+/*
+console.log(this);
+
+const obj2 = {
+  a: 2,
+  b: this.a
+};
+*/
+/*
+function logThis(){
+  console.log(this);
+}
+logThis();
+logThis.call('hello');
+
+this
+const obj3 = {
+  method: () => {
+    console.log(this); //same value as outside arrow function
+  }
+};
+obj3.method();
+*/
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
