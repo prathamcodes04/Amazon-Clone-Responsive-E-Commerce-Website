@@ -103,14 +103,11 @@ export function loadProductsFetch(){
       }
       return new Product(productDetails);
     });
-
     console.log('load products');
   });
   return promise;
 }
-loadProductsFetch().then(() => {
-  console.log('next step');
-});
+loadProductsFetch();
 
 /*
 export function loadProducts(fun) { //call fun after loading all products
