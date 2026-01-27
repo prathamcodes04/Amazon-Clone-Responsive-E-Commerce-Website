@@ -42,19 +42,22 @@
 // ];
 
 //getting variable from cart.js file
-import{ cart, addTocART } from '../data/cart.js';
-import { products } from '../data/products.js';
-import { formatCurrency } from './utils/money.js';
+import { cart, addTocART } from "../data/cart.js";
+import { products, loadProducts } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
 
-//after generate html 
-//combining all html together using string
-let productsHTML = '';
+loadProducts(renderProductsGrid); //callback 
 
-//generate html
-//looping through product array using forEach()
-products.forEach((product) => {
-//now for each product or object we will create html using template string
-  productsHTML += `
+function renderProductsGrid() {
+  //after generate html
+  //combining all html together using string
+  let productsHTML = "";
+
+  //generate html
+  //looping through product array using forEach()
+  products.forEach((product) => {
+    //now for each product or object we will create html using template string
+    productsHTML += `
     <div class="product-container">
       <div class="product-image-container">
         <img class="product-image"
@@ -107,36 +110,37 @@ products.forEach((product) => {
       </button>
     </div>
   `;
-});
+  });
 
-//now using DOM to get productsHTML on webpage
-//look for element which contains all our products
-//we have product-conatiner, give it a class to access in js
-document.querySelector('.js-products-grid').innerHTML = productsHTML;
+  //now using DOM to get productsHTML on webpage
+  //look for element which contains all our products
+  //we have product-conatiner, give it a class to access in js
+  document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
-//function for updating cart quantity
-function updateCartQuantity(){
-  //variable to store total quantity
+  //function for updating cart quantity
+  function updateCartQuantity() {
+    //variable to store total quantity
     let cartQuantity = 0;
     //total quantity of cart
     cart.forEach((cartItem) => {
       cartQuantity += cartItem.quantity;
-    })
-    
-    //accesing cart to update cart quantity
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
+    });
 
-//now we will work on add to cart button
-//add a class to js-add-to-cart-button
-//and looping through each button using forEach()
-document.querySelectorAll('.add-to-cart-button').forEach((button) =>{
-    button.addEventListener('click', () => {
-    //adding product to cart
-    //using data attribute  to access id of the product
-    //and accessing it using dataset
-    const productId = button.dataset.productId;
-    addTocART(productId);
-    updateCartQuantity();
+    //accesing cart to update cart quantity
+    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  }
+
+  //now we will work on add to cart button
+  //add a class to js-add-to-cart-button
+  //and looping through each button using forEach()
+  document.querySelectorAll(".add-to-cart-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      //adding product to cart
+      //using data attribute  to access id of the product
+      //and accessing it using dataset
+      const productId = button.dataset.productId;
+      addTocART(productId);
+      updateCartQuantity();
+    });
   });
-});
+}
