@@ -43,10 +43,10 @@
 
 //getting variable from cart.js file
 import { cart, addTocART } from "../data/cart.js";
-import { products, loadProductsFetch } from "../data/products.js";
+import { products, loadProducts } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
-loadProductsFetch(renderProductsGrid); //callback 
+loadProducts(renderProductsGrid); //callback 
 
 function renderProductsGrid() {
   //after generate html
